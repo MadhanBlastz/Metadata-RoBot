@@ -14,6 +14,7 @@ OFF = [[InlineKeyboardButton('Metadata Off ❌', callback_data='metadata_0')], [
 @Client.on_message(filters.private & filters.command('metadata'))
 async def handle_metadata(bot: Client, message: Message):
 
+    await message.reply_text(reply_markup=InlineKeyboardMarkup(ON))
     
     bool_metadata = await db.get_metadata(message.from_user.id)
     user_metadata = await db.get_metadata_code(message.from_user.id)
